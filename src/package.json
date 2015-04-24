@@ -1,0 +1,27 @@
+{
+  "name": "ODNC",
+  "main": "html/main.html",
+  "version": "0.1.0",
+  "window": {
+    "title": "ODNC",
+    "show": false,
+    //"icon": "clock24.png",
+    "toolbar": false,
+    "min_width": 900
+  },
+    "maintainers":[ {
+    "name": "Jeremy Ryan"
+  }],
+  "licenses": [
+    {
+      "type": "GPLv2",
+      "url": "https://github.com/saferindoors/odnc/blob/master/LICENSE"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "git", 
+      "url": "https://github.com/saferindoors/odnc/"
+    }
+  ]
+}

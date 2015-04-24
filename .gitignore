@@ -1,0 +1,7 @@
+src/node_modules/
+src/locales/
+src/icudtl.dat
+src/nw.pak
+*.sublime-project
+*.sublime-workspace
+src/ODNCproject.json

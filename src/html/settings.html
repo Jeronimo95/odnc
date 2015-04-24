@@ -1,0 +1,30 @@
+<section class="app_section" id="settings" data-name="Settings">
+<div class="col-md-12 col-lg-6 col-lg-offset-3">
+	<div class="page-header">
+		<h1>
+			Settings
+		</h1>
+	</div>
+	<section>
+		<h2>Connection Settings</h2>
+		<div class="row">
+			<div class="col-md-3">Serial Port:</div>
+			<div class="col-md-9">
+				<select id="setting_serial_port"></select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">Baud Rate:</div>
+			<div class="col-md-9">
+				<input id="setting_baud_rate" type="text" value="9600" /> (DyNet Default 9600)
+			</div>
+		</div>
+	</section>
+	<div class="row">
+		<div class="col-md-12">
+			<button class="btn btn-primary" id="setting_save">Save</button>
+			<span id="setting_save_comp"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Saved!</span>
+		</div>
+	</div>
+</div>
+</section>

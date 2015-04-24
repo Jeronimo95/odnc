@@ -25,6 +25,7 @@ ODNC has only been tested on windows, but should run on OSX and Linux. See the "
 1. Git clone the repo
 2. cd into src
 3. npm install [serialport](https://github.com/voodootikigod/node-serialport)
+4. Install [NW.js](https://github.com/nwjs/nw.js) into the src directory and run the NW executable.
 
 ## Reporting issues
 

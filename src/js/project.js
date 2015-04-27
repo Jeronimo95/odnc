@@ -13,6 +13,9 @@ var Project = {
 		finalobj.Serial = {};
 		finalobj.Serial.activePort = serial.activePort;
 		finalobj.Serial.baudrate = serial.baudrate;
+
+		finalobj.Settings = Settings;
+
 		var jsonstr = JSON.stringify(finalobj);
 
 		var ouputfile;
@@ -42,9 +45,22 @@ var Project = {
 			Saved.savedItems = loadobj.Saved.savedItems;
 			Playback.Data.items = loadobj.playback.items;
 			serial.baudrate = loadobj.Serial.baudrate;
+			Settings = loadobj.Settings;
 
 			serial.activePort = loadobj.Serial.activePort;
 			$( "#setting_serial_port" ).val(loadobj.Serial.activePort);
+
+			$("#setting_a0").prop('checked', Settings.area0warn);
+			$("#setting_1c").prop('checked', Settings.only1c);
+			
+			if(Settings.only1c){
+				$("#live_in_0").prop('disabled', true);
+				$("#live_in_0").val('1C');
+			}else{
+				$("#live_in_0").prop('disabled', false);
+			}
+
+			$("#setting_opps").prop('checked', Settings.onlyknownopps);
 
 			AreaNaming.refreshDOM();
 			Playback.Funcs.updateDOM();

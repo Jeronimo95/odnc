@@ -39,10 +39,19 @@ Serial.prototype.dissconect = function (){
 };
 
 Serial.prototype.send = function (data){
-	if(data[1]===0 && Settings.area0warn){//if byte 1 is 0 all areas are effected, we'll make sure the user wants this
+	if(data[1]===0 && Settings.area0warn){
 		if(!confirm("This will be sent to all areas! \n Are you sure you want to continue?")){
 			return false;
 		}
+	}
+	if(Settings.onlyknownopps && !Dynet.isKnownOppCode(data[3]) ) {
+		alert("Opp code is unknown, will not send.");
+		return false;
+	}
+
+	if(Settings.only1c && !data[0]===0x1C) {
+		alert("Only 1C messages are allowed");
+		return false;
 	}
 
 	if (this.sp.isOpen()) this.sp.write(data);
@@ -257,7 +266,7 @@ var Dynet = {
 				break;
 
 			default:
-				string += " UNKNOWEN OPP CODE? ";
+				string += " UNKNOWEN OPP CODE";
 		}
 		return string;//all done return the string
 	},
@@ -275,5 +284,45 @@ var Dynet = {
 		var d = data ^ 255;
 		d = (d / 254)*100;
 		return d.toFixed(2);
+	},
+	isKnownOppCode: function (code){
+		var rtn = false;
+		switch(code){
+			case 0x00:
+			case 0x01:
+			case 0x02:
+			case 0x03:
+			case 0x0A:
+			case 0x0B:
+			case 0x0C:
+			case 0x0D:
+			case 0x04:
+			case 0x05:
+			case 0x06:
+			case 0x66:
+			case 0x67:
+			case 0x64:
+			case 0x0f:
+			case 0x17:
+			case 0x18:
+			case 0x61:
+			case 0x60:
+			case 0x71:
+			case 0x72:
+			case 0x73:
+			case 0x76:
+			case 0x62:
+			case 0x63:
+			case 0x79:
+			case 0x7A:
+			case 0x70:
+			case 0x7D:
+			case 0x08:
+			case 0x15:
+			case 0x16:
+				rtn = true;
+				break;
+		}
+		return rtn;
 	}
 }
